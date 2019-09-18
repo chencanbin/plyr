@@ -7,7 +7,7 @@ Plyr是一个简单的、轻量级、易用的和可定制化的html5、youtube�
 
 [![Image of Plyr](https://cdn.plyr.io/static/demo/screenshot.png?v=3)](https://plyr.io)
 
-# 特性
+# 功能特性
 
 -   📼 **HTML视频 & 音频, YouTube & Vimeo** - 支持主流视频格式
 -   💪 **Accessible** - 支持VTT字幕和屏幕阅读器
@@ -61,7 +61,7 @@ Plyr扩展了标准的[html5媒体元素](https://developer.mozilla.org/en-US/do
 </audio>
 ```
 
-对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr响应式生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以反映您托管嵌入的域名，或者您可以选择忽略它。
+对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr响应式生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以作用在您托管嵌入的域名，或者您可以选择忽略它。
 
 ### YouTube
 
@@ -275,7 +275,7 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 
 | 配置项               | 类型                       | 默认值                                                                                                                        | 说明                                                                                                                                                                                                                                                                                                                                                                                             |
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`            | Boolean                    | `true`                                                                                                                         | 完全禁用Plyr。这将允许您执行用户代理检查，或类似于为某个UA(浏览器标识,可以使得服务器能够识别客户使用的操作系统及版本)启用或禁用Plyr。如下面的例子。                                                                                                                                                                                                                           |
+| `enabled`            | Boolean                    | `true`                                                                                                                         | 完全禁用Plyr。这将允许您执行UA检查，或类似于为某个UA启用或禁用Plyr（UA:浏览器标识,可以使得服务器能够识别客户使用的操作系统及版本）。如下面的例子。                                                                                                                                                                                                                           |
 | `debug`              | Boolean                    | `false`                                                                                                                        | 在控制台中显示调试信息                                                                                                                                                                                                                                                                                                                                                            |
 | `controls`           | Array, Function 或者 Element | `['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']` | If a function is passed, it is assumed your method will return either an element or HTML string for the controls. Three arguments will be passed to your function; `id` (the unique id for the player), `seektime` (the seektime step in seconds), and `title` (the media title). See [controls.md](controls.md) for more info on how the html needs to be structured.                                  |
 | `settings`           | Array                      | `['captions', 'quality', 'speed', 'loop']`                                                                                     | 如果使用的是默认控件，则可以指定要在菜单中显示的设置                                                                                                                                                                                                                                                                                                   |
@@ -287,7 +287,7 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 | `autoplay`&sup2;     | Boolean                    | `false`                                                                                                                        | Autoplay the media on load. If the `autoplay` attribute is present on a `<video>` or `<audio>` element, this will be automatically set to true.                                                                                                                                                                                                                                                         |
 | `autopause`&sup1;    | Boolean                    | `true`                                                                                                                         | Only allow one player playing at once.                                                                                                                                                                                                                                                                                                                                                                  |
 | `seekTime`           | Number                     | `10`                                                                                                                           | The time, in seconds, to seek when a user hits fast forward or rewind.                                                                                                                                                                                                                                                                                                                                  |
-| `volume`             | Number                     | `1`                                                                                                                            | 一个介于0到1的数字,, 代表播放器的初始音量.                                                                                                                                                                                                                                                                                                                               |
+| `volume`             | Number                     | `1`                                                                                                                            | 一个介于0到1的数字, 代表播放器的初始音量.                                                                                                                                                                                                                                                                                                                               |
 | `muted`              | Boolean                    | `false`                                                                                                                        | Whether to start playback muted. If the `muted` attribute is present on a `<video>` or `<audio>` element, this will be automatically set to true.                                                                                                                                                                                                                                                       |
 | `clickToPlay`        | Boolean                    | `true`                                                                                                                         | Click (or tap) of the video container will toggle play/pause.                                                                                                                                                                                                                                                                                                                                           |
 | `disableContextMenu` | Boolean                    | `true`                                                                                                                         | Disable right click menu on video to <em>help</em> as very primitive obfuscation to prevent downloads of content.                                                                                                                                                                                                                                                                                       |
@@ -313,8 +313,8 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 | `youtube`            | Object                     | `{ noCookie: false, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1 }`                                               | See [YouTube embed options](https://developers.google.com/youtube/player_parameters#Parameters). The only custom option is `noCookie` to use an alternative to YouTube that doesn't use cookies (useful for GDPR, etc). Some are set automatically based on other config options, namely: `autoplay`, `hl`, `controls`, `disablekb`, `playsinline`, `cc_load_policy`, `cc_lang_pref`, `widget_referrer` |
 | `previewThumbnails`  | Object                     | `{ enabled: false, src: '' }`                                                                                                  | `enabled`: Whether to enable the preview thumbnails (they must be generated by you). `src` must be either a string or an array of strings representing URLs for the VTT files containing the image URL(s). Learn more about [preview thumbnails](#preview-thumbnails) below.                                                                                                                            |
 
-1.  Vimeo only
-2.  Autoplay is generally not recommended as it is seen as a negative user experience. It is also disabled in many browsers. Before raising issues, do your homework. More info can be found here:
+1.  仅Vimeo
+2.  通常不建议使用自动播放（autoplay）配置，因为它被视为一种负面的用户体验，它在许多浏览器中也被禁用。在提出Issues之前，先做功课。更多信息请访问：
 
 -   https://webkit.org/blog/6784/new-video-policies-for-ios/
 -   https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
@@ -322,11 +322,12 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 
 # API
 
-There are methods, setters and getters on a Plyr object.
+下面是Plyr对象上的方法、setter和getter
 
-## Object
 
-The easiest way to access the Plyr object is to set the return value from your call to the constructor to a variable. For example:
+## 对象（Object）
+
+访问Plyr对象的最简单的方法，是通过构造函数创建Plyr实例，并赋给一个变量，如下：
 
 ```javascript
 const player = new Plyr('#player', {
@@ -334,7 +335,7 @@ const player = new Plyr('#player', {
 });
 ```
 
-You can also access the object through any events:
+你也可以通过一些事件去访问对象:
 
 ```javascript
 element.addEventListener('ready', event => {
@@ -342,20 +343,20 @@ element.addEventListener('ready', event => {
 });
 ```
 
-## 函数方法（Methods）
+## 方法（Methods）
 
-Example method use:
+示例方法:
 
 ```javascript
 player.play(); // Start playback
 player.fullscreen.enter(); // Enter fullscreen
 ```
 
-| Method                   | Parameters       | Description                                                                                                |
+| 方法                      | 参数             | 说明                                                                                               |
 | ------------------------ | ---------------- | ---------------------------------------------------------------------------------------------------------- |
 | `play()`&sup1;           | -                | 开始播放.                                                                                            |
 | `pause()`                | -                | 暂停播放.                                                                                            |
-| `togglePlay(toggle)`     | Boolean          | 切换播放，如果没有参数，它将根据当前状态切换。                      |
+| `togglePlay(toggle)`     | Boolean          | 切换播放暂停状态，如果没有参数，它将根据当前播放暂停状态切换。                      |
 | `stop()`                 | -                | 停止播放并重置为开始。                                                                          |
 | `restart()`              | -                | 重新播放.                                                                                                   |
 | `rewind(seekTime)`       | Number           | Rewind playback by the specified seek time. If no parameter is passed, the default seek time will be used. |
@@ -368,24 +369,24 @@ player.fullscreen.enter(); // Enter fullscreen
 | `fullscreen.toggle()`    | -                | 切换全屏状态.                                                                                         |
 | `airplay()`              | -                | 在支持airplay的设备里（一般是苹果设备），弹出airplay弹出框                                                         |
 | `toggleControls(toggle)` | Boolean          | Toggle the controls (video only). Takes optional truthy value to force it on/off.                          |
-| `on(event, function)`    | String, Function | Add an event listener for the specified event.                                                             |
-| `once(event, function)`  | String, Function | Add an event listener for the specified event once.                                                        |
-| `off(event, function)`   | String, Function | Remove an event listener for the specified event.                                                          |
-| `supports(type)`         | String           | Check support for a mime type.                                                                             |
+| `on(event, function)`    | String, Function | 为指定事件添加事件侦听.                                                                                 |
+| `once(event, function)`  | String, Function | 为指定事件添加一次性的事件侦听。                                                        |
+| `off(event, function)`   | String, Function | 移除指定事件的事件侦听                                                                                      |
+| `supports(type)`         | String           | 检查对多媒体文件格式的支持性。                                                                               |
 | `destroy()`              | -                | 销毁Plyr实例，启动垃圾回收机制                                                                                  |
 
-1.  对于HTML5播放器, 在 _一些_ 浏览器里`play()` 会返回一个 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 对象 - WebKit and Mozilla [according to MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) at time of writing.
+1.  对于HTML5播放器, 在 _一些_ 浏览器里`play()` 会返回一个 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 对象 - WebKit 和 Mozilla [根据MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) at time of writing.
 
-## Getters and Setters
+## Getters 和 Setters
 
-Example setters:
+setters范例:
 
 ```javascript
 player.volume = 0.5; // Sets volume at 50%
 player.currentTime = 10; // Seeks to 10 seconds
 ```
 
-Example getters:
+getters范例:
 
 ```javascript
 player.volume; // 0.5;
@@ -393,21 +394,21 @@ player.currentTime; // 10
 player.fullscreen.active; // false;
 ```
 
-| Property             | Getter | Setter | Description                                                                                                                                                                                                                                                                                                                            |
+| 属性             | Getter | Setter | 说明                                                                                                                                                                                                                                                                                                                                   |
 | -------------------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isHTML5`            | ✓      | -      | Returns a boolean indicating if the current player is HTML5.                                                                                                                                                                                                                                                                           |
-| `isEmbed`            | ✓      | -      | Returns a boolean indicating if the current player is an embedded player.                                                                                                                                                                                                                                                              |
-| `playing`            | ✓      | -      | Returns a boolean indicating if the current player is playing.                                                                                                                                                                                                                                                                         |
-| `paused`             | ✓      | -      | Returns a boolean indicating if the current player is paused.                                                                                                                                                                                                                                                                          |
-| `stopped`            | ✓      | -      | Returns a boolean indicating if the current player is stopped.                                                                                                                                                                                                                                                                         |
-| `ended`              | ✓      | -      | Returns a boolean indicating if the current player has finished playback.                                                                                                                                                                                                                                                              |
-| `buffered`           | ✓      | -      | Returns a float between 0 and 1 indicating how much of the media is buffered                                                                                                                                                                                                                                                           |
-| `currentTime`        | ✓      | ✓      | Gets or sets the currentTime for the player. The setter accepts a float in seconds.                                                                                                                                                                                                                                                    |
+| `isHTML5`            | ✓      | -      | 返回一个布尔值，表示当前播放器是否为HTML5。                                                                                                                                                                                                                                                                         |
+| `isEmbed`            | ✓      | -      | 返回一个布尔值，表示当前播放器是否为嵌入式播放器。                                                                                                                                                                                                                                                      |
+| `playing`            | ✓      | -      | 返回一个布尔值，表示当前播放器是否在播放.                                                                                                                                                                                                                                                                         |
+| `paused`             | ✓      | -      | 返回一个布尔值，表示当前播放器是否在暂停中.                                                                                                                                                                                                                                                                          |
+| `stopped`            | ✓      | -      | 返回一个布尔值，表示当前播放器是否已经停止.                                                                                                                                                                                                                                                                         |
+| `ended`              | ✓      | -      | 返回一个布尔值，表示当前播放器是否播放完成。                                                                                                                                                                                                                                                             |
+| `buffered`           | ✓      | -      | 返回一个介于0和1之间的浮点数，表示当前媒体缓冲了多少                                                                                                                                                                                                                                                      |
+| `currentTime`        | ✓      | ✓      | 获取或设置播放器的当前时间。setter接受以秒为单位的浮点数（float）。                                                                                                                                                                                                                                                   |
 | `seeking`            | ✓      | -      | Returns a boolean indicating if the current player is seeking.                                                                                                                                                                                                                                                                         |
-| `duration`           | ✓      | -      | Returns the duration for the current media.                                                                                                                                                                                                                                                                                            |
-| `volume`             | ✓      | ✓      | Gets or sets the volume for the player. The setter accepts a float between 0 and 1.                                                                                                                                                                                                                                                    |
-| `muted`              | ✓      | ✓      | Gets or sets the muted state of the player. The setter accepts a boolean.                                                                                                                                                                                                                                                              |
-| `hasAudio`           | ✓      | -      | Returns a boolean indicating if the current media has an audio track.                                                                                                                                                                                                                                                                  |
+| `duration`           | ✓      | -      | 返回当前媒体的持续时间。                                                                                                                                                                                                                                                                                           |
+| `volume`             | ✓      | ✓      | 获取或设置播放器的音量。setter接受一个介于0和1之间的浮点数（float）。                                                                                                                                                                                                                                                   |
+| `muted`              | ✓      | ✓      | 获取或设置播放器的静音状态. setter接受一个布尔值.                                                                                                                                                                                                                                                              |
+| `hasAudio`           | ✓      | -      | 返回一个布尔值，表示当前媒体是否有音频曲目。                                                                                                                                                                                                                                                                  |
 | `speed`              | ✓      | ✓      | Gets or sets the speed for the player. The setter accepts a value in the options specified in your config. Generally the minimum should be 0.5.                                                                                                                                                                                        |
 | `quality`&sup1;      | ✓      | ✓      | Gets or sets the quality for the player. The setter accepts a value from the options specified in your config.                                                                                                                                                                                                                         |
 | `loop`               | ✓      | ✓      | Gets or sets the current loop state of the player. The setter accepts a boolean.                                                                                                                                                                                                                                                       |
@@ -416,19 +417,19 @@ player.fullscreen.active; // false;
 | `autoplay`           | ✓      | ✓      | Gets or sets the autoplay state of the player. The setter accepts a boolean.                                                                                                                                                                                                                                                           |
 | `currentTrack`       | ✓      | ✓      | Gets or sets the caption track by index. `-1` means the track is missing or captions is not active                                                                                                                                                                                                                                     |
 | `language`           | ✓      | ✓      | Gets or sets the preferred captions language for the player. The setter accepts an ISO two-letter language code. Support for the languages is dependent on the captions you include. If your captions don't have any language data, or if you have multiple tracks with the same language, you may want to use `currentTrack` instead. |
-| `fullscreen.active`  | ✓      | -      | Returns a boolean indicating if the current player is in fullscreen mode.                                                                                                                                                                                                                                                              |
-| `fullscreen.enabled` | ✓      | -      | Returns a boolean indicating if the current player has fullscreen enabled.                                                                                                                                                                                                                                                             |
+| `fullscreen.active`  | ✓      | -      | 返回一个布尔值，表示当前播放器是否在全屏模式中                                                                                                                                                                                                                                                              |
+| `fullscreen.enabled` | ✓      | -      | 返回一个布尔值，表示当前播放器是否已启用全屏                                                                                                                                                                                                                                                            |
 | `pip`&sup1;          | ✓      | ✓      | Gets or sets the picture-in-picture state of the player. The setter accepts a boolean. This currently only supported on Safari 10+ (on MacOS Sierra+ and iOS 10+) and Chrome 70+.                                                                                                                                                      |
 | `ratio`              | ✓      | ✓      | Gets or sets the video aspect ratio. The setter accepts a string in the same format as the `ratio` option.                                                                                                                                                                                                                             |
-| `download`           | ✓      | ✓      | Gets or sets the URL for the download button. The setter accepts a string containing a valid absolute URL.                                                                                                                                                                                                                             |
+| `download`           | ✓      | ✓      | 获取或设置下载按钮的URL。setter接受包含有效URL的字符串。                                                                                                                                                                                                                            |
 
-1.  HTML5 only
+1.  仅HTML5
 
-### The `.source` setter
+### `.source` setter
 
-This allows changing the player source and type on the fly.
+允许在运行中更改播放器源和类型。
 
-Video example:
+Video范例:
 
 ```javascript
 player.source = {
@@ -465,7 +466,7 @@ player.source = {
 };
 ```
 
-Audio example:
+Audio范例:
 
 ```javascript
 player.source = {
@@ -484,7 +485,7 @@ player.source = {
 };
 ```
 
-YouTube example:
+YouTube范例:
 
 ```javascript
 player.source = {
@@ -498,9 +499,9 @@ player.source = {
 };
 ```
 
-_Note_: `src` can be the video ID or URL
+_注意_: `src` 可以是video ID或者URL
 
-Vimeo example
+Vimeo范例
 
 ```javascript
 player.source = {
@@ -514,9 +515,9 @@ player.source = {
 };
 ```
 
-_Note:_ `src` property for YouTube and Vimeo can either be the video ID or the whole URL.
+_注意:_ YouTube和Vimeo的`src`属性可以是video ID或者URL
 
-| Property       | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 属性       | 类型   | 说明                                                                                                                                                                                                                                                                                                                                                                                                    |
 | -------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `type`         | String | Either `video` or `audio`. _Note:_ YouTube and Vimeo are currently not supported as audio sources.                                                                                                                                                                                                                                                                                                             |
 | `title`        | String | _Optional._ Title of the new media. Used for the `aria-label` attribute on the play button, and outer container. YouTube and Vimeo are populated automatically.                                                                                                                                                                                                                                                |
@@ -524,7 +525,7 @@ _Note:_ `src` property for YouTube and Vimeo can either be the video ID or the w
 | `poster`&sup1; | String | The URL for the poster image (HTML5 video only).                                                                                                                                                                                                                                                                                                                                                               |
 | `tracks`&sup1; | String | An array of track objects. Each element in the array is mapped directly to a track element and any keys mapped directly to HTML attributes so as in the example above, it will render as `<track kind="captions" label="English" srclang="en" src="https://cdn.selz.com/plyr/1.0/example_captions_en.vtt" default>` and similar for the French version. Booleans are converted to HTML5 value-less attributes. |
 
-1.  HTML5 only
+1.  仅HTML5
 
 # Events
 
@@ -538,9 +539,9 @@ player.on('ready', event => {
 });
 ```
 
-## Standard Media Events
+## 标准媒体事件
 
-| Event Type         | Description                                                                                                                                                                                                            |
+| 事件种类            | 说明                                                                                                                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `progress`         | Sent periodically to inform interested parties of progress downloading the media. Information about the current amount of the media that has been downloaded is available in the media element's `buffered` attribute. |
 | `playing`          | Sent when the media begins to play (either for the first time, after having been paused, or after ending and then restarting).                                                                                         |
@@ -561,7 +562,7 @@ player.on('ready', event => {
 | `controlsshown`    | Sent when the controls are shown.                                                                                                                                                                                      |
 | `ready`            | Triggered when the instance is ready for API calls.                                                                                                                                                                    |
 
-### HTML5 only
+### 仅HTML5
 
 | Event Type       | Description                                                                                                                                                                                                                                                                                                                                    |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -577,9 +578,9 @@ player.on('ready', event => {
 | `cuechange`      | Sent when a `TextTrack` has changed the currently displaying cues.                                                                                                                                                                                                                                                                             |
 | `error`          | Sent when an error occurs. The element's `error` attribute contains more information.                                                                                                                                                                                                                                                          |
 
-### YouTube only
+### 仅YouTube
 
-| Event Type    | Description                                                                                                                                                                                                                                                                                                                |
+| 事件种类    | 说明                                                                                                                                                                                                                                                                                                                |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `statechange` | The state of the player has changed. The code can be accessed via `event.detail.code`. Possible values are `-1`: Unstarted, `0`: Ended, `1`: Playing, `2`: Paused, `3`: Buffering, `5`: Video cued. See the [YouTube Docs](https://developers.google.com/youtube/iframe_api_reference#onStateChange) for more information. |
 
@@ -587,35 +588,36 @@ _Note:_ These events also bubble up the DOM. The event target will be the contai
 
 Some event details borrowed from [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
 
-# Embeds
+# 嵌入式
 
 YouTube and Vimeo are currently supported and function much like a HTML5 video. Similar events and API methods are available for all types. However if you wish
 to access the API's directly. You can do so via the `embed` property of your player object - e.g. `player.embed`. You can then use the relevant methods from the
 third party APIs. More info on the respective API's here:
 
--   [YouTube iframe API Reference](https://developers.google.com/youtube/iframe_api_reference)
--   [Vimeo player.js Reference](https://github.com/vimeo/player.js)
+您可以通过Plyr播放器对象的`embed`属性执行此操作，例如`player.embed`，然后可以使用第三方API了。有关各自API的更多信息，请参见：
 
-_Note_: Not all API methods may work 100%. Your mileage may vary. It's better to use the Plyr API where possible.
+-   [YouTube iframe API指南](https://developers.google.com/youtube/iframe_api_reference)
+-   [Vimeo player.js指南](https://github.com/vimeo/player.js)
 
+_Note_: 并非所有的API方法都能100%正常工作。因为你的环境可能不同，最好尽可能使用Plyr API。
 # 键盘快捷键
 
 By default, a player will bind the following keyboard shortcuts when it has focus. If you have the `global` option to `true` and there's only one player in the
 document then the shortcuts will work when any element has focus, apart from an element that requires input.
 
-| Key        | Action                                 |
+| 键位        | 操作                                 |
 | ---------- | -------------------------------------- |
 | `0` to `9` | Seek from 0 to 90% respectively        |
-| `space`    | Toggle playback                        |
-| `K`        | Toggle playback                        |
-| &larr;     | Seek backward by the `seekTime` option |
-| &rarr;     | Seek forward by the `seekTime` option  |
-| &uarr;     | Increase volume                        |
-| &darr;     | Decrease volume                        |
-| `M`        | Toggle mute                            |
-| `F`        | Toggle fullscreen                      |
-| `C`        | Toggle captions                        |
-| `L`        | Toggle loop                            |
+| `space`    | 切换播放暂停状态                       |
+| `K`        | 切换播放暂停状态                         |
+| &larr;     | 后退视频 （受`seekTime` 选项影响）               |
+| &rarr;     | 前进视频 （受`seekTime` 选项影响）               |
+| &uarr;     | 增大音量                                |
+| &darr;     | 减少音量                                |
+| `M`        | 切换静音状态                            |
+| `F`        | 切换全屏状态                            |
+| `C`        | 切换字幕开关状态                        |
+| `L`        | 切换循环播放状态                            |
 
 # 预览缩略图
 
@@ -645,32 +647,33 @@ Plyr支持大多数 _现代_ 浏览器的最新的两个版本。
 | IE11          | ✓&sup3;       |
 | IE10          | ✓&sup2;&sup3; |
 
-1.  除非设置“playsinline”属性，否则在iPhone上的safari浏览器会强制使用ios自带播放器渲染`<video>`，同时音量控制也被禁用，因为视频的音量控制只能由ios设备控制。
-2.  Native player used (no support for `<progress>` or `<input type="range">`) but the API is supported. No native fullscreen support, fallback can be used (see [options](#options)).
-3.  Polyfills required. See below.
+1.  除非你设置“playsinline”属性，否则在iPhone上的safari浏览器会强制使用ios自带播放器渲染`<video>`，同时音量控制也被禁用，因为视频的音量控制只能由ios设备控制。
+2.  Native player used (不支持 `<progress>` 或者 `<input type="range">`) but the API is supported. No native fullscreen support, fallback can be used (你可以查看文档的 [options](#options)部分).
+3.  需要使用Polyfills. 见下文.
 
 ## Polyfills
 
-由于Plyr使用es6，所以并不能完全支持的所有浏览器。这意味着某些功能需要使用polyfill才能使用，否则会遇到问题。我们选择不让90%的用户使用额外的js来支持这些特性，而是让polyfill根据您的需要来解决问题。我找到的最简单的方法是使用[polyfill.io]（https://polyfill.io），它提供基于用户代理的polyfill。这是demo使用的方法。
+由于Plyr使用es6，所以并不能完全支持的所有浏览器。这意味着某些功能需要使用Polyfills才能使用，否则会遇到问题。我们选择不让90%的用户使用额外的js来支持这些特性，而是让polyfill根据您的需要来解决问题。我找到的最简单的方法是使用[polyfill.io]（https://polyfill.io），它提供基于用户代理的Polyfills。这是也是Demo里使用的方法。
 
 
-## Checking for support
+## 检查当前环境是否支持Plyr
 
-You can use the static method to check for support. For example
+您可以使用静态方法检查当前环境是否支持Plyr。例如
 
 ```javascript
 const supported = Plyr.supported('video', 'html5', true);
 ```
 
-The arguments are:
+参数分别是:
 
--   Media type (`audio` or `video`)
--   Provider (`html5`, `youtube` or `vimeo`)
--   Whether the player has the `playsinline` attribute (only applicable to iOS 10+)
+-   种类 (`audio` 或 `video`)
+-   提供程序 (`html5`, `youtube` 或 `vimeo`)
+-   播放器是否具有 `playsinline` 属性 (仅适用于iOS 10+)
 
-## Disable support programmatically
+## 禁用Plyr支持
 
-The `enabled` option can be used to disable certain User Agents. For example, if you don't want to use Plyr for smartphones, you could use:
+`enabled`选项可用于禁用某些UA(指的是设备类型)的Plyr功能。例如，如果您不想将Plyr用于智能手机，如下所示：
+
 
 ```javascript
 {
@@ -678,13 +681,14 @@ The `enabled` option can be used to disable certain User Agents. For example, if
 }
 ```
 
-If a User Agent is disabled but supports `<video>` and `<audio>` natively, it will use the native player.
+如果你的设备被禁用了Plyr，但是支持原生的 `<video>` 和 `<audio>`标签, 则会使用设备的原生播放器.
 
-# Plugins & Components
+# 插件 & 组件
 
-Some awesome folks have made plugins for CMSs and Components for JavaScript frameworks:
+有一群了不起的老哥为Plyr开发了CMS插件，或者JavaScript框架组件：
 
-| Type      | Maintainer                                                     | Link                                                                                         |
+
+| Type      | 维护者                                                     | 链接                                                                                         |
 | --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | WordPress | Brandon Lavigne ([@drrobotnik](https://github.com/drrobotnik)) | [https://wordpress.org/plugins/plyr/](https://wordpress.org/plugins/plyr/)                   |
 | Angular   | Simon Bobrov ([@smnbbrv](https://github.com/smnbbrv))          | [https://github.com/smnbbrv/ngx-plyr](https://github.com/smnbbrv/ngx-plyr)                   |
@@ -695,7 +699,7 @@ Some awesome folks have made plugins for CMSs and Components for JavaScript fram
 
 # Issues
 
-如果你在Plyr遇到一些诡异的现象或者bug，请在GitHub issues提出来。
+如果你在Plyr中遇到一些诡异的现象或者Bug，请在GitHub Issues提出来。
 
 
 # 作者
@@ -710,7 +714,7 @@ Plyr主要是由[@sam_potts](https://twitter.com/sam_potts) / [sampotts.me](http
 -   [通过Patreon捐献](https://www.patreon.com/plyr)
 -   [通过PayPal捐献](https://www.paypal.me/pottsy/20usd)
 
-# Mentions
+# 被提及
 
 -   [ProductHunt](https://www.producthunt.com/tech/plyr)
 -   [The Changelog](http://thechangelog.com/plyr-simple-html5-media-player-custom-controls-webvtt-captions/)
@@ -724,7 +728,7 @@ Plyr主要是由[@sam_potts](https://twitter.com/sam_potts) / [sampotts.me](http
 -   [The Treehouse Show #131](https://teamtreehouse.com/library/episode-131-origami-react-responsive-hero-images)
 -   [noupe.com](http://www.noupe.com/design/html5-plyr-is-a-responsive-and-accessible-video-player-94389.html)
 
-# Used by
+# 使用了Plyr的公司或项目
 
 -   [Selz.com](https://selz.com)
 -   [Peugeot.fr](http://www.peugeot.fr/marque-et-technologie/technologies/peugeot-i-cockpit.html)
@@ -737,24 +741,24 @@ Plyr主要是由[@sam_potts](https://twitter.com/sam_potts) / [sampotts.me](http
 -   [Sparkk TV](https://www.sparkktv.com/)
 -   [@halfhalftravel](https://www.halfhalftravel.com/)
 
-If you want to be added to the list, open a pull request. It'd be awesome to see how you're using Plyr 😎
+如果你的项目使用了Plyr并想把项目添加到上面的列表中, 你可以开个PR。 我们会很开心的看到你是如何使用Plyr的  😎
 
-# Useful links and credits
+# 实用链接
 
-Credit to the PayPal HTML5 Video player from which Plyr's caption functionality was originally ported from:
+Plyr的字幕功能最初是从PayPal的HTML5视频播放器移植过来的:
 
--   [PayPal's Accessible HTML5 Video Player](https://github.com/paypal/accessible-html5-video-player)
--   [An awesome guide for Plyr in Japanese!](http://syncer.jp/how-to-use-plyr-io) by [@arayutw](https://twitter.com/arayutw)
+-   [PayPal开发的HTML5视频播放器](https://github.com/paypal/accessible-html5-video-player)
+-   一个由[@arayutw](https://twitter.com/arayutw)写的[日文版Plyr指南!](http://syncer.jp/how-to-use-plyr-io)
 
 # 致谢
 
 [![Fastly](https://cdn.plyr.io/static/fastly-logo.png)](https://www.fastly.com/)
 
-非常感谢 [Fastly](https://www.fastly.com/) 提供了CDN托管服务
+感谢 [Fastly](https://www.fastly.com/) 提供了CDN托管服务
 
 [![Sentry](https://cdn.plyr.io/static/sentry-logo-black.svg)](https://sentry.io/)
 
-非常感谢[Sentry](https://sentry.io/)为demo站点提供日志服务。
+感谢[Sentry](https://sentry.io/)为demo站点提供日志服务。
 
 
 # 版权和许可
