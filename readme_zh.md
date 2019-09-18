@@ -1,45 +1,46 @@
 [English](readme.md) | [中文文档](readme_zh.md)
 
-Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vimeo media player that supports [_modern_](#browser-support) browsers.
+Plyr是一个简单的、轻量级、易用的和可定制化的html5、youtube和vimeo媒体播放器，支持[现代](#浏览器兼容性)浏览器。
 
-[Checkout the demo](https://plyr.io) - [Donate](#donate) - [Slack](https://bit.ly/plyr-chat) - [![npm version](https://badge.fury.io/js/plyr.svg)](https://badge.fury.io/js/plyr)
+
+[查看在线demo](https://plyr.io) - [捐献](#捐献) - [Slack](https://bit.ly/plyr-chat) - [![npm version](https://badge.fury.io/js/plyr.svg)](https://badge.fury.io/js/plyr)
 
 [![Image of Plyr](https://cdn.plyr.io/static/demo/screenshot.png?v=3)](https://plyr.io)
 
-# Features
+# 特性
 
--   📼 **HTML Video & Audio, YouTube & Vimeo** - support for the major formats
--   💪 **Accessible** - full support for VTT captions and screen readers
--   🔧 **[Customisable](#html)** - make the player look how you want with the markup you want
--   😎 **Clean HTML** - uses the _right_ elements. `<input type="range">` for volume and `<progress>` for progress and well, `<button>`s for buttons. There's no
-    `<span>` or `<a href="#">` button hacks
--   📱 **Responsive** - works with any screen size
--   💵 **[Monetization](#ads)** - make money from your videos
--   📹 **[Streaming](#demos)** - support for hls.js, Shaka and dash.js streaming playback
--   🎛 **[API](#api)** - toggle playback, volume, seeking, and more through a standardized API
--   🎤 **[Events](#events)** - no messing around with Vimeo and YouTube APIs, all events are standardized across formats
--   🔎 **[Fullscreen](#fullscreen)** - supports native fullscreen with fallback to "full window" modes
--   ⌨️ **[Shortcuts](#shortcuts)** - supports keyboard shortcuts
--   🖥 **Picture-in-Picture** - supports picture-in-picture mode
--   📱 **Playsinline** - supports the `playsinline` attribute
--   🏎 **Speed controls** - adjust speed on the fly
--   📖 **Multiple captions** - support for multiple caption tracks
--   🌎 **i18n support** - support for internationalization of controls
--   👌 **[Preview thumbnails](#preview-thumbnails)** - support for displaying preview thumbnails
--   🤟 **No frameworks** - written in "vanilla" ES6 JavaScript, no jQuery required
--   💁‍♀️ **SASS** - to include in your build processes
+-   📼 **HTML视频 & 音频, YouTube & Vimeo** - 支持主流视频格式
+-   💪 **Accessible** - 支持VTT字幕和屏幕阅读器
+-   🔧 **[可定制化](#html)** - 你可以根据自己的需求通过HTML标记来定制播放器
+-   😎 **HTML语义化** - 使用 _语义化_ 的元素标签. 使用`<input type="range">` 标签生成音量滑动控制条和使用 `<progress>`标签来生成进度条, `<button>`标签用来生成按钮. 我们不会使用
+    `<span>` 或者 `<a href="#">` 来生成一个按钮
+-   📱 **响应式** - 可以在任何尺寸的屏幕设备正常工作
+-   💵 **[商业化](#广告支持（Ads）)** - 你可以给你的视频插入广告盈利
+-   📹 **[流媒体](#demos)** - 支持hls.js、shaka和dash.js流媒体播放
+-   🎛 **[API](#api)** - 提供了切换播放、音量、搜索等API
+-   🎤 **[事件](#events)** - 不受Vimeo和YouTube API的干扰, 所有事件都是跨格式标准化的
+-   🔎 **[全屏](#全屏)** - 支持本机原生全屏，并可回退到“全窗口”模式
+-   ⌨️ **[快捷键](#键盘快捷键)** - 支持键盘快捷键
+-   🖥 **画中画模式** - 支持画中画模式
+-   📱 **Playsinline属性** - 支持 `playsinline` 属性
+-   🏎 **播放速度控制** - 可以调整视频播放速度
+-   📖 **多重字幕** - 支持多重字幕轨
+-   🌎 **i18n支持** - 支持国际化，多国语言支持
+-   👌 **[预览缩略图](#预览缩略图)** - 支持显示预览缩略图
+-   🤟 **无框架依赖** - 用原生es6编写，不依赖jquery
+-   💁‍♀️ **SASS** - 已包含在项目生成过程中
 
 ### Demos
 
-You can try Plyr in Codepen using our minimal templates: [HTML5 video](https://codepen.io/pen?template=bKeqpr), [HTML5 audio](https://codepen.io/pen?template=rKLywR), [YouTube](https://codepen.io/pen?template=GGqbbJ), [Vimeo](https://codepen.io/pen?template=bKeXNq). For Streaming we also have example integrations with: [Dash.js](https://codepen.io/pen?template=zaBgBy), [Hls.js](https://codepen.io/pen?template=oyLKQb) and [Shaka Player](https://codepen.io/pen?template=ZRpzZO)
+你可以在Codepen中体验Plyr: [HTML5 video](https://codepen.io/pen?template=bKeqpr), [HTML5 audio](https://codepen.io/pen?template=rKLywR), [YouTube](https://codepen.io/pen?template=GGqbbJ), [Vimeo](https://codepen.io/pen?template=bKeXNq). 当然我们也提供了流媒体版本: [Dash.js](https://codepen.io/pen?template=zaBgBy), [Hls.js](https://codepen.io/pen?template=oyLKQb) 和 [Shaka Player](https://codepen.io/pen?template=ZRpzZO)
 
-# Quick setup
+# 快速开始
 
 ## HTML
 
-Plyr extends upon the standard [HTML5 media element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) markup so that's all you need for those types.
+Plyr扩展了标准的[html5媒体元素](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
 
-### HTML5 Video
+### HTML5视频
 
 ```html
 <video poster="/path/to/poster.jpg" id="player" playsinline controls>
@@ -51,7 +52,7 @@ Plyr extends upon the standard [HTML5 media element](https://developer.mozilla.o
 </video>
 ```
 
-### HTML5 Audio
+### HTML5音频
 
 ```html
 <audio id="player" controls>
@@ -60,7 +61,7 @@ Plyr extends upon the standard [HTML5 media element](https://developer.mozilla.o
 </audio>
 ```
 
-For YouTube and Vimeo players, Plyr uses progressive enhancement to enhance the default `<iframe>` embeds. Below are some examples. The `plyr__video-embed` classname will make the embed responsive. You can add the `autoplay`, `loop`, `hl` (YouTube only) and `playsinline` (YouTube only) query parameters to the URL and they will be set as config options automatically. For YouTube, the `origin` should be updated to reflect the domain you're hosting the embed on, or you can opt to omit it.
+对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr响应式生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以反映您托管嵌入的域名，或者您可以选择忽略它。
 
 ### YouTube
 
@@ -89,7 +90,7 @@ _Note_: The `data-plyr-embed-id` can either be the video ID or URL for the media
 
 ### Vimeo
 
-Much the same as YouTube above.
+和上面的youtube差不多
 
 ```html
 <div class="plyr__video-embed" id="player">
@@ -110,7 +111,7 @@ Or the `<div>` non progressively enhanced method:
 
 ## JavaScript
 
-You can use Plyr as an ES6 module as follows:
+你可以用ES6的模块功能加载Plyr:
 
 ```javascript
 import Plyr from 'plyr';
@@ -118,7 +119,7 @@ import Plyr from 'plyr';
 const player = new Plyr('#player');
 ```
 
-Alertnatively you can include the `plyr.js` script before the closing `</body>` tag and then in your JS create a new instance of Plyr as below.
+当然了，你也可以在`</body>` 标签前面直接引入`plyr.js`脚本，然后在js中创建Plyr的新实例，如下所示
 
 ```html
 <script src="path/to/plyr.js"></script>
@@ -127,15 +128,15 @@ Alertnatively you can include the `plyr.js` script before the closing `</body>` 
 </script>
 ```
 
-See [initialising](#initialising) for more information on advanced setups.
+你可以在文档的 [初始化](#初始化) 部分查看高级设置的详细信息
 
-You can use our CDN (provided by [Fastly](https://www.fastly.com/)) for the JavaScript. There's 2 versions; one with and one without [polyfills](#polyfills). My recommendation would be to manage polyfills seperately as part of your application but to make life easier you can use the polyfilled build.
+你也可以使用CDN外链(由[Fastly](https://www.fastly.com/)提供) 来引入JavaScript部分. 这里有两个版本; 一个是不包含[polyfills](#polyfills)的，另一个是包含的. 经过我本人测试，不包含[polyfills](#polyfills)不能兼容ie浏览器，而包含[polyfills](#polyfills)的则支持ie9以上的浏览器，只是体积会大一点。
 
 ```html
 <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
 ```
 
-...or...
+...或者带[polyfills](#polyfills)的...
 
 ```html
 <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
@@ -143,34 +144,33 @@ You can use our CDN (provided by [Fastly](https://www.fastly.com/)) for the Java
 
 ## CSS
 
-Include the `plyr.css` stylsheet into your `<head>`.
+你可以在你页面的`<head>`直接引入 `plyr.css` 文件.
 
 ```html
 <link rel="stylesheet" href="path/to/plyr.css" />
 ```
 
-If you want to use our CDN (provided by [Fastly](https://www.fastly.com/)) for the default CSS, you can use the following:
+如果你想使用CDN外链(由[Fastly](https://www.fastly.com/)提供) 引入, 你可以直接复制下面的链接:
 
 ```html
 <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 ```
 
-## SVG Sprite
+## SVG雪碧图
 
-The SVG sprite is loaded automatically from our CDN (provided by [Fastly](https://www.fastly.com/)). To change this, see the [options](#options) below. For
-reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.5.6/plyr.svg`.
+SVG雪碧图是从我们的CDN(由[Fastly](https://www.fastly.com/)提供)自动加载的。要更改此设置，请参见下面的选项。作为参考，可以在https://cdn.plyr.io/3.5.6/plyr.svg 上找到承载cdn的SVG雪碧图。
 
-# Ads
+# 广告支持（Ads）
 
-Plyr has partnered up with [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) to offer monetization options for your videos. Getting setup is easy:
+Plyr 与 [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) 广告商合作，为你的视频提供了商业化选择. 操作起来很容易:
 
--   [Sign up for a vi.ai account](https://vi.ai/publisher-video-monetization/?aid=plyrio)
--   Grab your publisher ID from the code snippet
--   Enable ads in the [config options](#options) and enter your publisher ID
+-   [注册一个 vi.ai 账户](https://vi.ai/publisher-video-monetization/?aid=plyrio)
+-   获取您的publisher id
+-   在[config options](#options) 配置中开启广告选项，并输入你的publisher ID
 
-Any questions regarding the ads can be sent straight to vi.ai and any issues with rendering raised through GitHub issues.
+有关广告的任何问题都可以跟vi.ai反映，如果广告功能在Plyr出现问题你可以提issue。
 
-# Advanced
+# 高级配置
 
 ## SASS
 
@@ -182,8 +182,8 @@ you write. Check out the JavaScript source for more on this.
 
 ## SVG
 
-The icons used in the Plyr controls are loaded in an SVG sprite. The sprite is automatically loaded from our CDN by default. If you already have an icon build
-system in place, you can include the source plyr icons (see `/src/sprite` for source icons).
+Plyr控件中使用的图标加载在SVG雪碧图中。默认情况下，雪碧图会自动从CDN加载。如果你在自己项目中已经有一个自己的图标，您可以包含源plyr图标（请参见`/src/sprite`了解源图标）。
+
 
 ### Using the `iconUrl` option
 
@@ -202,24 +202,24 @@ TextTrack captions are also hosted on another domain, you will need to add this 
 on CORS checkout the MDN docs:
 [https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 
-## Captions
+## 字幕（Captions）
 
 WebVTT captions are supported. To add a caption track, check the HTML example above and look for the `<track>` element. Be sure to
 [validate your caption files](https://quuz.org/webvtt/).
 
 ## JavaScript
 
-### Initialising
+### 初始化
 
 You can specify a range of arguments for the constructor to use:
 
--   A [CSS string selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
--   A [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
--   A [jQuery](https://jquery.com) object
+-   [CSS选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+-   [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
+-   一个 [jQuery](https://jquery.com) 对象
 
 _Note_: If a `NodeList`, `Array`, or jQuery object are passed, the first element will be used for setup. To setup multiple players, see [multiple players](#multiple-players) below.
 
-#### Single player
+#### 单播放器
 
 Passing a CSS string selector that's compatible with [`querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector):
 
@@ -273,21 +273,21 @@ Options can be passed as an object to the constructor as above or as JSON in `da
 
 Note the single quotes encapsulating the JSON and double quotes on the object keys. Only string values need double quotes.
 
-| Option               | Type                       | Default                                                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                             |
+| 配置项               | 类型                       | 默认值                                                                                                                        | 说明                                                                                                                                                                                                                                                                                                                                                                                             |
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`            | Boolean                    | `true`                                                                                                                         | Completely disable Plyr. This would allow you to do a User Agent check or similar to programmatically enable or disable Plyr for a certain UA. Example below.                                                                                                                                                                                                                                           |
-| `debug`              | Boolean                    | `false`                                                                                                                        | Display debugging information in the console                                                                                                                                                                                                                                                                                                                                                            |
-| `controls`           | Array, Function or Element | `['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']` | If a function is passed, it is assumed your method will return either an element or HTML string for the controls. Three arguments will be passed to your function; `id` (the unique id for the player), `seektime` (the seektime step in seconds), and `title` (the media title). See [controls.md](controls.md) for more info on how the html needs to be structured.                                  |
-| `settings`           | Array                      | `['captions', 'quality', 'speed', 'loop']`                                                                                     | If you're using the default controls are used then you can specify which settings to show in the menu                                                                                                                                                                                                                                                                                                   |
-| `i18n`               | Object                     | See [defaults.js](/src/js/config/defaults.js)                                                                                  | Used for internationalization (i18n) of the text within the UI.                                                                                                                                                                                                                                                                                                                                         |
-| `loadSprite`         | Boolean                    | `true`                                                                                                                         | Load the SVG sprite specified as the `iconUrl` option (if a URL). If `false`, it is assumed you are handling sprite loading yourself.                                                                                                                                                                                                                                                                   |
-| `iconUrl`            | String                     | `null`                                                                                                                         | Specify a URL or path to the SVG sprite. See the [SVG section](#svg) for more info.                                                                                                                                                                                                                                                                                                                     |
+| `enabled`            | Boolean                    | `true`                                                                                                                         | 完全禁用Plyr。这将允许您执行用户代理检查，或类似于为某个UA(浏览器标识,可以使得服务器能够识别客户使用的操作系统及版本)启用或禁用Plyr。如下面的例子。                                                                                                                                                                                                                           |
+| `debug`              | Boolean                    | `false`                                                                                                                        | 在控制台中显示调试信息                                                                                                                                                                                                                                                                                                                                                            |
+| `controls`           | Array, Function 或者 Element | `['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']` | If a function is passed, it is assumed your method will return either an element or HTML string for the controls. Three arguments will be passed to your function; `id` (the unique id for the player), `seektime` (the seektime step in seconds), and `title` (the media title). See [controls.md](controls.md) for more info on how the html needs to be structured.                                  |
+| `settings`           | Array                      | `['captions', 'quality', 'speed', 'loop']`                                                                                     | 如果使用的是默认控件，则可以指定要在菜单中显示的设置                                                                                                                                                                                                                                                                                                   |
+| `i18n`               | Object                     | 查看 [defaults.js](/src/js/config/defaults.js)                                                                                  | 用于UI组件中文本的国际化多语言配置                                                                                                                                                                                                                                                                                                                                         |
+| `loadSprite`         | Boolean                    | `true`                                                                                                                         | 加载指定为`iconUrl`选项的SVG雪碧图（如果是URL）. 如果为 `false`, 那就认定你是在自己加载雪碧图。                                                                                                                                                                                                                                                            |
+| `iconUrl`            | String                     | `null`                                                                                                                         | 指定SVG雪碧图的URL或路径. 查看文档中 [SVG部分](#svg) 获取更多信息.                                                                                                                                                                                                                                                                                                                     |
 | `iconPrefix`         | String                     | `plyr`                                                                                                                         | Specify the id prefix for the icons used in the default controls (e.g. "plyr-play" would be "plyr"). This is to prevent clashes if you're using your own SVG sprite but with the default controls. Most people can ignore this option.                                                                                                                                                                  |
 | `blankVideo`         | String                     | `https://cdn.plyr.io/static/blank.mp4`                                                                                         | Specify a URL or path to a blank video file used to properly cancel network requests.                                                                                                                                                                                                                                                                                                                   |
 | `autoplay`&sup2;     | Boolean                    | `false`                                                                                                                        | Autoplay the media on load. If the `autoplay` attribute is present on a `<video>` or `<audio>` element, this will be automatically set to true.                                                                                                                                                                                                                                                         |
 | `autopause`&sup1;    | Boolean                    | `true`                                                                                                                         | Only allow one player playing at once.                                                                                                                                                                                                                                                                                                                                                                  |
 | `seekTime`           | Number                     | `10`                                                                                                                           | The time, in seconds, to seek when a user hits fast forward or rewind.                                                                                                                                                                                                                                                                                                                                  |
-| `volume`             | Number                     | `1`                                                                                                                            | A number, between 0 and 1, representing the initial volume of the player.                                                                                                                                                                                                                                                                                                                               |
+| `volume`             | Number                     | `1`                                                                                                                            | 一个介于0到1的数字,, 代表播放器的初始音量.                                                                                                                                                                                                                                                                                                                               |
 | `muted`              | Boolean                    | `false`                                                                                                                        | Whether to start playback muted. If the `muted` attribute is present on a `<video>` or `<audio>` element, this will be automatically set to true.                                                                                                                                                                                                                                                       |
 | `clickToPlay`        | Boolean                    | `true`                                                                                                                         | Click (or tap) of the video container will toggle play/pause.                                                                                                                                                                                                                                                                                                                                           |
 | `disableContextMenu` | Boolean                    | `true`                                                                                                                         | Disable right click menu on video to <em>help</em> as very primitive obfuscation to prevent downloads of content.                                                                                                                                                                                                                                                                                       |
@@ -342,7 +342,7 @@ element.addEventListener('ready', event => {
 });
 ```
 
-## Methods
+## 函数方法（Methods）
 
 Example method use:
 
@@ -353,28 +353,28 @@ player.fullscreen.enter(); // Enter fullscreen
 
 | Method                   | Parameters       | Description                                                                                                |
 | ------------------------ | ---------------- | ---------------------------------------------------------------------------------------------------------- |
-| `play()`&sup1;           | -                | Start playback.                                                                                            |
-| `pause()`                | -                | Pause playback.                                                                                            |
-| `togglePlay(toggle)`     | Boolean          | Toggle playback, if no parameters are passed, it will toggle based on current status.                      |
-| `stop()`                 | -                | Stop playback and reset to start.                                                                          |
-| `restart()`              | -                | Restart playback.                                                                                          |
+| `play()`&sup1;           | -                | 开始播放.                                                                                            |
+| `pause()`                | -                | 暂停播放.                                                                                            |
+| `togglePlay(toggle)`     | Boolean          | 切换播放，如果没有参数，它将根据当前状态切换。                      |
+| `stop()`                 | -                | 停止播放并重置为开始。                                                                          |
+| `restart()`              | -                | 重新播放.                                                                                                   |
 | `rewind(seekTime)`       | Number           | Rewind playback by the specified seek time. If no parameter is passed, the default seek time will be used. |
 | `forward(seekTime)`      | Number           | Fast forward by the specified seek time. If no parameter is passed, the default seek time will be used.    |
 | `increaseVolume(step)`   | Number           | Increase volume by the specified step. If no parameter is passed, the default step will be used.           |
 | `decreaseVolume(step)`   | Number           | Increase volume by the specified step. If no parameter is passed, the default step will be used.           |
 | `toggleCaptions(toggle)` | Boolean          | Toggle captions display. If no parameter is passed, it will toggle based on current status.                |
-| `fullscreen.enter()`     | -                | Enter fullscreen. If fullscreen is not supported, a fallback "full window/viewport" is used instead.       |
-| `fullscreen.exit()`      | -                | Exit fullscreen.                                                                                           |
-| `fullscreen.toggle()`    | -                | Toggle fullscreen.                                                                                         |
-| `airplay()`              | -                | Trigger the airplay dialog on supported devices.                                                           |
+| `fullscreen.enter()`     | -                | 进入全屏. 如果该设备不支持全屏, 取而代之的是回退“全窗口/视窗”。.                                                 |
+| `fullscreen.exit()`      | -                | 退出全屏.                                                                                           |
+| `fullscreen.toggle()`    | -                | 切换全屏状态.                                                                                         |
+| `airplay()`              | -                | 在支持airplay的设备里（一般是苹果设备），弹出airplay弹出框                                                         |
 | `toggleControls(toggle)` | Boolean          | Toggle the controls (video only). Takes optional truthy value to force it on/off.                          |
 | `on(event, function)`    | String, Function | Add an event listener for the specified event.                                                             |
 | `once(event, function)`  | String, Function | Add an event listener for the specified event once.                                                        |
 | `off(event, function)`   | String, Function | Remove an event listener for the specified event.                                                          |
 | `supports(type)`         | String           | Check support for a mime type.                                                                             |
-| `destroy()`              | -                | Destroy the instance and garbage collect any elements.                                                     |
+| `destroy()`              | -                | 销毁Plyr实例，启动垃圾回收机制                                                                                  |
 
-1.  For HTML5 players, `play()` will return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in _some_ browsers - WebKit and Mozilla [according to MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) at time of writing.
+1.  对于HTML5播放器, 在 _一些_ 浏览器里`play()` 会返回一个 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 对象 - WebKit and Mozilla [according to MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) at time of writing.
 
 ## Getters and Setters
 
@@ -598,7 +598,7 @@ third party APIs. More info on the respective API's here:
 
 _Note_: Not all API methods may work 100%. Your mileage may vary. It's better to use the Plyr API where possible.
 
-# Shortcuts
+# 键盘快捷键
 
 By default, a player will bind the following keyboard shortcuts when it has focus. If you have the `global` option to `true` and there's only one player in the
 document then the shortcuts will work when any element has focus, apart from an element that requires input.
@@ -617,19 +617,22 @@ document then the shortcuts will work when any element has focus, apart from an 
 | `C`        | Toggle captions                        |
 | `L`        | Toggle loop                            |
 
-# Preview thumbnails
+# 预览缩略图
+
+当您将鼠标悬停在清理器上或在主视频区域清理时，可以根据演示显示预览缩略图。这可以用于所有视频类型，但当然对于HTML5来说是最简单的。你需要自己生成雪碧图或图像。可以使用aws转码器来生成帧，然后将它们组合成雪碧图。出于性能方面的原因，建议使用雪碧图，因为它们下载速度更快，压缩成小文件大小也更容易，因此加载速度更快。
 
 It's possible to display preview thumbnails as per the demo when you hover over the scrubber or while you are scrubbing in the main video area. This can be used for all video types but is easiest with HTML5 of course. You will need to generate the sprite or images yourself. This is possible using something like AWS transcoder to generate the frames and then combine them into a sprite image. Sprites are recommended for performance reasons - they will be much faster to download and easier to compress into a small file size making them load faster.
 
 You can see the example VTT files [here](https://cdn.plyr.io/static/demo/thumbs/100p.vtt) and [here](https://cdn.plyr.io/static/demo/thumbs/240p.vtt) for how the sprites are done. The coordinates are set as the `xywh` hash on the URL in the order X Offset, Y Offset, Width, Height (e.g. `240p-00001.jpg#xywh=1708,480,427,240` is offset `1708px` from the left, `480px` from the top and is `427x240px`. If you want to include images per frame, this is also possible but will be slower, resulting in a degraded experience.
 
-# Fullscreen
+# 全屏
 
-Fullscreen in Plyr is supported by all browsers that [currently support it](http://caniuse.com/#feat=fullscreen).
+Plyr的全屏功能支持大多数现代浏览器，你可以从[这里](http://caniuse.com/#feat=fullscreen)查看全屏功能的浏览器适配程度 .
 
-# Browser support
+# 浏览器兼容性
 
-Plyr supports the last 2 versions of most _modern_ browsers.
+Plyr支持大多数 _现代_ 浏览器的最新的两个版本。
+
 
 | Browser       | Supported     |
 | ------------- | ------------- |
@@ -642,13 +645,14 @@ Plyr supports the last 2 versions of most _modern_ browsers.
 | IE11          | ✓&sup3;       |
 | IE10          | ✓&sup2;&sup3; |
 
-1.  Mobile Safari on the iPhone forces the native player for `<video>` unless the `playsinline` attribute is present. Volume controls are also disabled as they are handled device wide.
+1.  除非设置“playsinline”属性，否则在iPhone上的safari浏览器会强制使用ios自带播放器渲染`<video>`，同时音量控制也被禁用，因为视频的音量控制只能由ios设备控制。
 2.  Native player used (no support for `<progress>` or `<input type="range">`) but the API is supported. No native fullscreen support, fallback can be used (see [options](#options)).
 3.  Polyfills required. See below.
 
 ## Polyfills
 
-Plyr uses ES6 which isn't supported in all browsers quite yet. This means some features will need to be polyfilled to be available otherwise you'll run into issues. We've elected to not burden the ~90% of users that do support these features with extra JS and instead leave polyfilling to you to work out based on your needs. The easiest method I've found is to use [polyfill.io](https://polyfill.io) which provides polyfills based on user agent. This is the method the demo uses.
+由于Plyr使用es6，所以并不能完全支持的所有浏览器。这意味着某些功能需要使用polyfill才能使用，否则会遇到问题。我们选择不让90%的用户使用额外的js来支持这些特性，而是让polyfill根据您的需要来解决问题。我找到的最简单的方法是使用[polyfill.io]（https://polyfill.io），它提供基于用户代理的polyfill。这是demo使用的方法。
+
 
 ## Checking for support
 
@@ -691,19 +695,20 @@ Some awesome folks have made plugins for CMSs and Components for JavaScript fram
 
 # Issues
 
-If you find anything weird with Plyr, please let us know using the GitHub issues tracker.
+如果你在Plyr遇到一些诡异的现象或者bug，请在GitHub issues提出来。
 
-# Author
 
-Plyr is developed by [@sam_potts](https://twitter.com/sam_potts) / [sampotts.me](http://sampotts.me) with help from the awesome
-[contributors](https://github.com/sampotts/plyr/graphs/contributors)
+# 作者
 
-# Donate
+Plyr主要是由[@sam_potts](https://twitter.com/sam_potts) / [sampotts.me](http://sampotts.me)开发的，当然也少不了一众[contributors](https://github.com/sampotts/plyr/graphs/contributors)的帮助
 
-Plyr costs money to run, not only my time. I donate my time for free as I enjoy building Plyr but unfortunately have to pay for domains, hosting, and more. Any help with costs is appreciated...
 
--   [Donate via Patreon](https://www.patreon.com/plyr)
--   [Donate via PayPal](https://www.paypal.me/pottsy/20usd)
+# 捐献
+
+一直以来我很享受开发Plyr的过程，因此我一直都是无偿开发Plyr项目，开源并免费给大家使用。但由于开发并运营Plyr项目不仅仅花我了很多时间，我还需要为域名、服务器托管等支付不少费用。如果你觉得Plyr不错或者帮到了你，你可以给Plyr捐献以维持项目开销，谢谢…
+
+-   [通过Patreon捐献](https://www.patreon.com/plyr)
+-   [通过PayPal捐献](https://www.paypal.me/pottsy/20usd)
 
 # Mentions
 
@@ -741,16 +746,17 @@ Credit to the PayPal HTML5 Video player from which Plyr's caption functionality 
 -   [PayPal's Accessible HTML5 Video Player](https://github.com/paypal/accessible-html5-video-player)
 -   [An awesome guide for Plyr in Japanese!](http://syncer.jp/how-to-use-plyr-io) by [@arayutw](https://twitter.com/arayutw)
 
-# Thanks
+# 致谢
 
 [![Fastly](https://cdn.plyr.io/static/fastly-logo.png)](https://www.fastly.com/)
 
-Massive thanks to [Fastly](https://www.fastly.com/) for providing the CDN services.
+非常感谢 [Fastly](https://www.fastly.com/) 提供了CDN托管服务
 
 [![Sentry](https://cdn.plyr.io/static/sentry-logo-black.svg)](https://sentry.io/)
 
-Massive thanks to [Sentry](https://sentry.io/) for providing the logging services for the demo site.
+非常感谢[Sentry](https://sentry.io/)为demo站点提供日志服务。
 
-# Copyright and License
+
+# 版权和许可
 
 [The MIT license](license.md)
