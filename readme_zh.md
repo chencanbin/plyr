@@ -1,6 +1,6 @@
 [English](readme.md) | [中文文档](readme_zh.md)
 
-Plyr是一个简单的、轻量级、易用的和可定制化的Html5、Youtube和Vimeo媒体播放器，支持[现代](#浏览器兼容性)浏览器。
+Plyr是一个简单、轻量、开放和可定制化的Html5、Youtube和Vimeo媒体播放器，支持[现代](#浏览器兼容性)浏览器。
 
 
 [查看在线demo](https://plyr.io) - [捐献](#捐献) - [Slack](https://bit.ly/plyr-chat) - [![npm version](https://badge.fury.io/js/plyr.svg)](https://badge.fury.io/js/plyr)
@@ -10,7 +10,7 @@ Plyr是一个简单的、轻量级、易用的和可定制化的Html5、Youtube�
 # 功能特性
 
 -   📼 **HTML视频 & 音频, YouTube & Vimeo** - 支持主流视频格式
--   💪 **Accessible** - 支持VTT字幕和屏幕阅读器
+-   💪 **开放性** - 支持VTT字幕和屏幕阅读器
 -   🔧 **[可定制化](#html)** - 你可以根据自己的需求通过HTML标记来定制播放器
 -   😎 **HTML语义化** - 使用 _语义化_ 的元素标签. 使用`<input type="range">` 标签生成音量滑动控制条和使用 `<progress>`标签来生成进度条, `<button>`标签用来生成按钮. 我们不会使用
     `<span>` 或者 `<a href="#">` 来生成一个按钮
@@ -32,13 +32,13 @@ Plyr是一个简单的、轻量级、易用的和可定制化的Html5、Youtube�
 
 ### Demos
 
-你可以在Codepen中体验Plyr: [HTML5 video](https://codepen.io/pen?template=bKeqpr), [HTML5 audio](https://codepen.io/pen?template=rKLywR), [YouTube](https://codepen.io/pen?template=GGqbbJ), [Vimeo](https://codepen.io/pen?template=bKeXNq). 当然我们也提供了流媒体版本: [Dash.js](https://codepen.io/pen?template=zaBgBy), [Hls.js](https://codepen.io/pen?template=oyLKQb) 和 [Shaka Player](https://codepen.io/pen?template=ZRpzZO)
+你可以在Codepen中体验Plyr: [HTML5视频](https://codepen.io/pen?template=bKeqpr), [HTML5音频](https://codepen.io/pen?template=rKLywR), [YouTube](https://codepen.io/pen?template=GGqbbJ), [Vimeo](https://codepen.io/pen?template=bKeXNq). 当然我们也提供了流媒体版本: [Dash.js](https://codepen.io/pen?template=zaBgBy), [Hls.js](https://codepen.io/pen?template=oyLKQb) 和 [Shaka Player](https://codepen.io/pen?template=ZRpzZO)
 
 # 快速开始
 
 ## HTML
 
-Plyr扩展了标准的[html5媒体元素](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
+Plyr扩展了标准的[HTML5媒体元素](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
 
 ### HTML5视频
 
@@ -61,11 +61,11 @@ Plyr扩展了标准的[html5媒体元素](https://developer.mozilla.org/en-US/do
 </audio>
 ```
 
-对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr的响应式配置生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以作用在您托管嵌入的域名，或者您可以选择忽略它。
+对于YouTube和Vimeo播放器，Plyr默认以渐进式增强的方式使用嵌入式的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr的响应式配置生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以作用在您托管嵌入的域名，或者您可以选择忽略它。
 
 ### YouTube
 
-我们建议使用嵌入式播放器来进行[渐进式增强](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/)。您可以选择使用`<iframe>` 作为源元素（Plyr进行渐进式增强的地方）。或者使用普通的标准`<div>`，只不过要带上带两个基本数据属性 `data-plyr-provider`和 `data-plyr-embed-id`。
+我们建议以[渐进式增强](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/)的方式使用嵌入式播放器。您可以选择使用`<iframe>` 作为源元素（Plyr进行渐进式增强的地方）。或者使用普通的标准`<div>`，只不过要带上带两个基本数据属性 `data-plyr-provider`和 `data-plyr-embed-id`。
 
 
 ```html
@@ -137,7 +137,7 @@ const player = new Plyr('#player');
 <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
 ```
 
-...或者带[polyfills](#polyfills)的...
+...或者带[polyfills](#polyfills)的（如果你的项目需要兼容ie浏览器，用这个）...
 
 ```html
 <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
@@ -145,7 +145,7 @@ const player = new Plyr('#player');
 
 ## CSS
 
-你可以在你页面的`<head>`直接引入 `plyr.css` 文件.
+你可以在你页面的`<head>`直接引入 `plyr.css` 文件。
 
 ```html
 <link rel="stylesheet" href="path/to/plyr.css" />
@@ -179,7 +179,6 @@ Plyr 与 [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) 广告�
 
 Plyr的HTML标签使用BEM方法（一种命名规范）命名， 例如`.plyr__controls`。您可以更改`option`中的class hooks,以匹配任何你自己写的自定义CSS。你可以查看javascript源代码了解更多信息。
 
-
 ## SVG
 
 Plyr控件中使用的图标加载在SVG雪碧图中。默认情况下，雪碧图会自动从CDN加载。如果你在自己项目中已经有一个自己的图标，您可以包含源plyr图标（请参见`/src/sprite`了解源图标）。
@@ -187,13 +186,16 @@ Plyr控件中使用的图标加载在SVG雪碧图中。默认情况下，雪碧�
 
 ### 使用`iconUrl`配置
 
-You can however specify your own `iconUrl` option and Plyr will determine if the url is absolute and requires loading by AJAX/CORS due to current browser
-limitations or if it's a relative path, just use the path directly.
+你可以配置自己的`iconUrl`参数，Plyr将判断：
+- url是否是绝对的
+- 由于当前浏览器的原因，ajax/cors请求加载的限制
+- 如果是相对路径，直接使用路径
 
-If you're using the `<base>` tag on your site, you may need to use something like this: [svgfixer.js](https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2)
+如果你在自己的站点使用了`<base>`标签，你可能要去使用[svgfixer.js](https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2)
 
-More info on SVG sprites here: [http://css-tricks.com/svg-sprites-use-better-icon-fonts/](http://css-tricks.com/svg-sprites-use-better-icon-fonts/) and the AJAX
-technique here: [http://css-tricks.com/ajaxing-svg-sprite/](http://css-tricks.com/ajaxing-svg-sprite/)
+你可以从这里查到更多关于SVG雪碧图的详细资料：[http://css-tricks.com/svg-sprites-use-better-icon-fonts/](http://css-tricks.com/svg-sprites-use-better-icon-fonts/)
+
+或者是AJAX技术相关资料：[http://css-tricks.com/ajaxing-svg-sprite/](http://css-tricks.com/ajaxing-svg-sprite/)
 
 ## 跨域 (CORS)
 
@@ -213,7 +215,7 @@ You can specify a range of arguments for the constructor to use:
 -   [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
 -   一个 [jQuery](https://jquery.com) 对象
 
-_Note_: If a `NodeList`, `Array`, or jQuery object are passed, the first element will be used for setup. To setup multiple players, see [multiple players](#multiple-players) below.
+_注意_: If a `NodeList`, `Array`, or jQuery object are passed, the first element will be used for setup. To setup multiple players, see [multiple players](#multiple-players) below.
 
 #### 单播放器
 
@@ -253,21 +255,21 @@ Both options will also return an array of instances in the order of they were in
 
 #### Options
 
-The second argument for the constructor is the [options](#options) object:
+构造函数的第二个参数是[options](#options)对象：
 
 ```javascript
 const player = new Plyr('#player', {
     title: 'Example Title',
 });
 ```
+Options可以作为对象传递给上述的构造函数，或者在每个目标元素的`data-plyr-config` 属性中作为JSON传递：
 
-Options can be passed as an object to the constructor as above or as JSON in `data-plyr-config` attribute on each of your target elements:
 
 ```html
 <video src="/path/to/video.mp4" id="player" controls data-plyr-config='{ "title": "Example Title" }'></video>
 ```
+注意，object keys上的单引号封装了json和双引号。只有字符串值需要双引号。
 
-Note the single quotes encapsulating the JSON and double quotes on the object keys. Only string values need double quotes.
 
 | 配置项               | 类型                       | 默认值                                                                                                                        | 说明                                                                                                                                                                                                                                                                                                                                                                                             |
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -649,7 +651,7 @@ Plyr支持大多数 _现代_ 浏览器的最新的两个版本。
 
 ## Polyfills
 
-由于Plyr使用es6，所以并不能完全支持的所有浏览器。这意味着某些功能需要使用Polyfills才能使用，否则会遇到问题。我们选择不让90%的用户使用额外的js来支持这些特性，而是让polyfill根据您的需要来解决问题。我找到的最简单的方法是使用[polyfill.io]（https://polyfill.io），它提供基于用户代理的Polyfills。这是也是Demo里使用的方法。
+由于Plyr使用ES6，所以并不能完全支持的所有浏览器。这意味着某些功能需要使用Polyfills才能使用，否则会遇到问题。我们选择不让90%的用户使用额外的js来支持这些特性，而是让polyfill根据您的需要来解决问题。我找到的最简单的方法是使用[polyfill.io]（https://polyfill.io），它提供基于用户代理的Polyfills。这是也是Demo里使用的方法。
 
 
 ## 检查当前环境是否支持Plyr
@@ -662,7 +664,7 @@ const supported = Plyr.supported('video', 'html5', true);
 
 参数分别是:
 
--   种类 (`audio` 或 `video`)
+-   类型 (`audio` 或 `video`)
 -   提供程序 (`html5`, `youtube` 或 `vimeo`)
 -   播放器是否具有 `playsinline` 属性 (仅适用于iOS 10+)
 
@@ -681,7 +683,7 @@ const supported = Plyr.supported('video', 'html5', true);
 
 # 插件 & 组件
 
-有一群了不起的老哥为Plyr开发了CMS插件，或者JavaScript框架组件：
+有一群给力的老哥为Plyr开发了CMS插件，或者JavaScript框架组件：
 
 
 | Type      | 维护者                                                     | 链接                                                                                         |
