@@ -1,6 +1,6 @@
 [English](readme.md) | [中文文档](readme_zh.md)
 
-Plyr是一个简单的、轻量级、易用的和可定制化的html5、youtube和vimeo媒体播放器，支持[现代](#浏览器兼容性)浏览器。
+Plyr是一个简单的、轻量级、易用的和可定制化的Html5、Youtube和Vimeo媒体播放器，支持[现代](#浏览器兼容性)浏览器。
 
 
 [查看在线demo](https://plyr.io) - [捐献](#捐献) - [Slack](https://bit.ly/plyr-chat) - [![npm version](https://badge.fury.io/js/plyr.svg)](https://badge.fury.io/js/plyr)
@@ -61,11 +61,12 @@ Plyr扩展了标准的[html5媒体元素](https://developer.mozilla.org/en-US/do
 </audio>
 ```
 
-对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr响应式生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以作用在您托管嵌入的域名，或者您可以选择忽略它。
+对于YouTube和Vimeo播放器，Plyr使用渐进式嵌入来增强默认的`<iframe>`。举个例子，设置`plyr_uu video-embed`类名将使Plyr的响应式配置生效。您可以将autoplay、loop、hl（仅限YouTube）和playsinline（仅限YouTube）查询参数添加到url，它们将自动设置为配置选项。对于YouTube，应该更新源代码以作用在您托管嵌入的域名，或者您可以选择忽略它。
 
 ### YouTube
 
-We recommend [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/) with the embedded players. You can elect to use an `<iframe>` as the source element (which Plyr will progressively enhance) or a bog standard `<div>` with two essential data attributes - `data-plyr-provider` and `data-plyr-embed-id`.
+我们建议使用嵌入式播放器来进行[渐进式增强](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/)。您可以选择使用`<iframe>` 作为源元素（Plyr进行渐进式增强的地方）。或者使用普通的标准`<div>`，只不过要带上带两个基本数据属性 `data-plyr-provider`和 `data-plyr-embed-id`。
+
 
 ```html
 <div class="plyr__video-embed" id="player">
@@ -78,15 +79,15 @@ We recommend [progressive enhancement](https://www.smashingmagazine.com/2009/04/
 </div>
 ```
 
-_Note_: The `plyr__video-embed` classname will make the player a responsive 16:9 (most common) iframe embed. When plyr itself kicks in, your custom `ratio` config option will be used.
+_注意_: `plyr__video-embed`类名会使播放器成为16:9响应式（最常见播放器比例）的`iframe`嵌入式播放器。当Plyr播放器本身启动时，将使用自定义的“ratio”配置选项。
 
-Or the `<div>` non progressively enhanced method:
+或者在`<div>`里使用非渐进增强的方式：
 
 ```html
 <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
 ```
 
-_Note_: The `data-plyr-embed-id` can either be the video ID or URL for the media.
+_注意_: `data-plyr-embed-id` 既可以是video ID，也可以是该媒体的URL地址。
 
 ### Vimeo
 
@@ -103,7 +104,7 @@ _Note_: The `data-plyr-embed-id` can either be the video ID or URL for the media
 </div>
 ```
 
-Or the `<div>` non progressively enhanced method:
+或者在`<div>`里使用非渐进增强的方式：
 
 ```html
 <div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="76979871"></div>
@@ -165,7 +166,7 @@ SVG雪碧图是从我们的CDN(由[Fastly](https://www.fastly.com/)提供)自动
 Plyr 与 [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) 广告商合作，为你的视频提供了商业化选择. 操作起来很容易:
 
 -   [注册一个 vi.ai 账户](https://vi.ai/publisher-video-monetization/?aid=plyrio)
--   获取您的publisher id
+-   获取您的publisher ID
 -   在[config options](#options) 配置中开启广告选项，并输入你的publisher ID
 
 有关广告的任何问题都可以跟vi.ai反映，如果广告功能在Plyr出现问题你可以提issue。
@@ -174,18 +175,17 @@ Plyr 与 [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) 广告�
 
 ## SASS
 
-You can use `bundle.scss` file included in `/src` as part of your build and change variables to suit your design. The SASS require you to
-use the [autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) plugin (you should be already!) as all declarations use the W3C definitions.
+你可以让`bundle.scss`包含进`/src`里面作为项目打包构建（build）的一部分，并且根据你的设计修改各种变量。Sass要求你使用`autoprefixer`（您应该已经在使用了！），因为所有声明都使用w3c标准。 
 
-The HTML markup uses the BEM methodology with `plyr` as the block, e.g. `.plyr__controls`. You can change the class hooks in the options to match any custom CSS
-you write. Check out the JavaScript source for more on this.
+Plyr的HTML标签使用BEM方法（一种命名规范）命名， 例如`.plyr__controls`。您可以更改`option`中的class hooks,以匹配任何你自己写的自定义CSS。你可以查看javascript源代码了解更多信息。
+
 
 ## SVG
 
 Plyr控件中使用的图标加载在SVG雪碧图中。默认情况下，雪碧图会自动从CDN加载。如果你在自己项目中已经有一个自己的图标，您可以包含源plyr图标（请参见`/src/sprite`了解源图标）。
 
 
-### Using the `iconUrl` option
+### 使用`iconUrl`配置
 
 You can however specify your own `iconUrl` option and Plyr will determine if the url is absolute and requires loading by AJAX/CORS due to current browser
 limitations or if it's a relative path, just use the path directly.
@@ -195,17 +195,13 @@ If you're using the `<base>` tag on your site, you may need to use something lik
 More info on SVG sprites here: [http://css-tricks.com/svg-sprites-use-better-icon-fonts/](http://css-tricks.com/svg-sprites-use-better-icon-fonts/) and the AJAX
 technique here: [http://css-tricks.com/ajaxing-svg-sprite/](http://css-tricks.com/ajaxing-svg-sprite/)
 
-## Cross Origin (CORS)
+## 跨域 (CORS)
 
-You'll notice the `crossorigin` attribute on the example `<video>` elements. This is because the TextTrack captions are loaded from another domain. If your
-TextTrack captions are also hosted on another domain, you will need to add this attribute and make sure your host has the correct headers setup. For more info
-on CORS checkout the MDN docs:
-[https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+您应该会注意到示例demo的`<video>`元素带`crossorigin`属性。这是因为我们的字幕文件是从别的域名加载过来的，如果你的字幕文件也是托管在别的域名上，你就必须添加`crossorigin`属性并且在相应的域名的后台服务器配置好了CORS头设置。关于更多CORS信息你可以查看MDN文档：[https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 
 ## 字幕（Captions）
 
-WebVTT captions are supported. To add a caption track, check the HTML example above and look for the `<track>` element. Be sure to
-[validate your caption files](https://quuz.org/webvtt/).
+支持在线字幕文件加载。如果要添加字幕轨，请查看上面的HTML示例的`<track>`元素。当然了要确保[验证你的字幕文件](https://quuz.org/webvtt/)。
 
 ## JavaScript
 
@@ -221,13 +217,13 @@ _Note_: If a `NodeList`, `Array`, or jQuery object are passed, the first element
 
 #### 单播放器
 
-Passing a CSS string selector that's compatible with [`querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector):
+通过CSS选择器（必须兼容[`querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)）:
 
 ```javascript
 const player = new Plyr('#player');
 ```
 
-Passing a [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement):
+通过 [HTMLElement](https://developer.mozilla.org/en/docs/Web/API/HTMLElement):
 
 ```javascript
 const player = new Plyr(document.getElementById('player'));
@@ -241,7 +237,7 @@ The HTMLElement or string selector can be the target `<video>`, `<audio>`, or `<
 
 #### Multiple players
 
-You have two choices here. You can either use a simple array loop to map the constructor:
+在这里你有两个选择. You can either use a simple array loop to map the constructor:
 
 ```javascript
 const players = Array.from(document.querySelectorAll('.js-player')).map(p => new Plyr(p));
