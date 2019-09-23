@@ -404,9 +404,8 @@ const controls = {
             'div',
             extend(attributes, {
                 class: `${attributes.class ? attributes.class : ''} ${this.config.classNames.display.start} `.trim(),
-                'aria-label': i18n.get(type, this.config),
+                'aria-label': '开始',
             }),
-            '00:00',
         );
 
         // Reference for updates
@@ -422,9 +421,8 @@ const controls = {
             'div',
             extend(attributes, {
                 class: `${attributes.class ? attributes.class : ''} ${this.config.classNames.display.end} `.trim(),
-                'aria-label': i18n.get(type, this.config),
+                'aria-label': '结束',
             }),
-            '00:00',
         );
 
         // Reference for updates
