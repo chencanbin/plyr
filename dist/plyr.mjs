@@ -8409,6 +8409,11 @@ function () {
     value: function off$1(event, callback) {
       off(this.elements.container, event, callback);
     }
+  }, {
+    key: "setMarker",
+    value: function setMarker(marker) {
+      controls.setMarker.call(this, marker);
+    }
     /**
      * Destroy an instance
      * Event listeners are removed when elements are removed

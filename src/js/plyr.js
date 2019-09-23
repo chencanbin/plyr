@@ -1092,6 +1092,10 @@ class Plyr {
         off(this.elements.container, event, callback);
     }
 
+    setMarker(marker) {
+        controls.setMarker.call(this, marker)
+    }
+
     /**
      * Destroy an instance
      * Event listeners are removed when elements are removed
