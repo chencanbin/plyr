@@ -253,8 +253,8 @@ typeof navigator === "object" && (function (global, factory) {
   (module.exports = function (key, value) {
     return store[key] || (store[key] = value !== undefined ? value : {});
   })('versions', []).push({
-    version: '3.1.3',
-    mode: 'global',
+    version: '3.2.1',
+    mode:  'global',
     copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
   });
   });
@@ -1190,7 +1190,7 @@ typeof navigator === "object" && (function (global, factory) {
   if (IteratorPrototype == undefined) IteratorPrototype = {};
 
   // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-  if (!has(IteratorPrototype, ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
+  if ( !has(IteratorPrototype, ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
 
   var iteratorsCore = {
     IteratorPrototype: IteratorPrototype,
@@ -1277,7 +1277,7 @@ typeof navigator === "object" && (function (global, factory) {
     if (anyNativeIterator) {
       CurrentIteratorPrototype = objectGetPrototypeOf(anyNativeIterator.call(new Iterable()));
       if (IteratorPrototype$2 !== Object.prototype && CurrentIteratorPrototype.next) {
-        if (objectGetPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype$2) {
+        if ( objectGetPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype$2) {
           if (objectSetPrototypeOf) {
             objectSetPrototypeOf(CurrentIteratorPrototype, IteratorPrototype$2);
           } else if (typeof CurrentIteratorPrototype[ITERATOR$1] != 'function') {
@@ -1296,7 +1296,7 @@ typeof navigator === "object" && (function (global, factory) {
     }
 
     // define iterator
-    if (IterablePrototype[ITERATOR$1] !== defaultIterator) {
+    if ( IterablePrototype[ITERATOR$1] !== defaultIterator) {
       hide(IterablePrototype, ITERATOR$1, defaultIterator);
     }
     iterators[NAME] = defaultIterator;
@@ -3808,6 +3808,10 @@ typeof navigator === "object" && (function (global, factory) {
   }
 
   function _iterableToArrayLimit(arr, i) {
+    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+      return;
+    }
+
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -4015,7 +4019,16 @@ typeof navigator === "object" && (function (global, factory) {
       global.URLSearchParams = URLSearchParams;
     };
 
-    if (!('URLSearchParams' in global) || new global.URLSearchParams('?a=1').toString() !== 'a=1') {
+    var checkIfURLSearchParamsSupported = function checkIfURLSearchParamsSupported() {
+      try {
+        var URLSearchParams = global.URLSearchParams;
+        return new URLSearchParams('?a=1').toString() === 'a=1' && typeof URLSearchParams.prototype.set === 'function';
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (!checkIfURLSearchParamsSupported()) {
       polyfillURLSearchParams();
     }
 
@@ -4729,17 +4742,17 @@ typeof navigator === "object" && (function (global, factory) {
     var fixMethod = function (KEY) {
       var nativeMethod = NativePrototype[KEY];
       redefine(NativePrototype, KEY,
-        KEY == 'add' ? function add(a) {
-          nativeMethod.call(this, a === 0 ? 0 : a);
+        KEY == 'add' ? function add(value) {
+          nativeMethod.call(this, value === 0 ? 0 : value);
           return this;
-        } : KEY == 'delete' ? function (a) {
-          return IS_WEAK && !isObject(a) ? false : nativeMethod.call(this, a === 0 ? 0 : a);
-        } : KEY == 'get' ? function get(a) {
-          return IS_WEAK && !isObject(a) ? undefined : nativeMethod.call(this, a === 0 ? 0 : a);
-        } : KEY == 'has' ? function has(a) {
-          return IS_WEAK && !isObject(a) ? false : nativeMethod.call(this, a === 0 ? 0 : a);
-        } : function set(a, b) {
-          nativeMethod.call(this, a === 0 ? 0 : a, b);
+        } : KEY == 'delete' ? function (key) {
+          return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+        } : KEY == 'get' ? function get(key) {
+          return IS_WEAK && !isObject(key) ? undefined : nativeMethod.call(this, key === 0 ? 0 : key);
+        } : KEY == 'has' ? function has(key) {
+          return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+        } : function set(key, value) {
+          nativeMethod.call(this, key === 0 ? 0 : key, value);
           return this;
         }
       );
@@ -4756,7 +4769,7 @@ typeof navigator === "object" && (function (global, factory) {
       var instance = new Constructor();
       // early implementations not supports chaining
       var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
-      // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
+      // V8 ~ Chromium 40- weak-collections throws on primitives, but should return false
       var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
       // most early implementations doesn't supports iterables, most modern - not close it correctly
       // eslint-disable-next-line no-new
@@ -5225,7 +5238,7 @@ typeof navigator === "object" && (function (global, factory) {
       return Array.from(document.querySelectorAll(selector)).includes(this);
     }
 
-    var matches = match;
+    var matches =  match;
     return matches.call(element, selector);
   }
 
@@ -5571,6 +5584,8 @@ typeof navigator === "object" && (function (global, factory) {
     return RangeTouch;
   }();
 
+  var nativePromiseConstructor = global_1.Promise;
+
   var SPECIES$5 = wellKnownSymbol('species');
 
   var setSpecies = function (CONSTRUCTOR_NAME) {
@@ -5693,7 +5708,7 @@ typeof navigator === "object" && (function (global, factory) {
   var queueMicrotaskDescriptor = getOwnPropertyDescriptor$3(global_1, 'queueMicrotask');
   var queueMicrotask = queueMicrotaskDescriptor && queueMicrotaskDescriptor.value;
 
-  var flush, head, last, notify, toggle, node, promise;
+  var flush, head, last, notify, toggle, node, promise, then;
 
   // modern engines have queueMicrotask method
   if (!queueMicrotask) {
@@ -5731,8 +5746,9 @@ typeof navigator === "object" && (function (global, factory) {
     } else if (Promise$1 && Promise$1.resolve) {
       // Promise.resolve without an argument throws an error in LG WebOS 2
       promise = Promise$1.resolve(undefined);
+      then = promise.then;
       notify = function () {
-        promise.then(flush);
+        then.call(promise, flush);
       };
     // for other environments - macrotask based on:
     // - setImmediate
@@ -5817,7 +5833,7 @@ typeof navigator === "object" && (function (global, factory) {
   var getInternalState$3 = internalState.get;
   var setInternalState$6 = internalState.set;
   var getInternalPromiseState = internalState.getterFor(PROMISE);
-  var PromiseConstructor = global_1[PROMISE];
+  var PromiseConstructor = nativePromiseConstructor;
   var TypeError$1 = global_1.TypeError;
   var document$2 = global_1.document;
   var process$2 = global_1.process;
@@ -5835,7 +5851,7 @@ typeof navigator === "object" && (function (global, factory) {
   var REJECTED = 2;
   var HANDLED = 1;
   var UNHANDLED = 2;
-  var Internal, OwnPromiseCapability, PromiseWrapper;
+  var Internal, OwnPromiseCapability, PromiseWrapper, nativeThen;
 
   var FORCED$2 = isForced_1(PROMISE, function () {
     // correct subclassing with @@species support
@@ -6060,13 +6076,25 @@ typeof navigator === "object" && (function (global, factory) {
         : newGenericPromiseCapability(C);
     };
 
-    // wrap fetch result
-    if (typeof $fetch == 'function') _export({ global: true, enumerable: true, forced: true }, {
-      // eslint-disable-next-line no-unused-vars
-      fetch: function fetch(input) {
-        return promiseResolve(PromiseConstructor, $fetch.apply(global_1, arguments));
-      }
-    });
+    if ( typeof nativePromiseConstructor == 'function') {
+      nativeThen = nativePromiseConstructor.prototype.then;
+
+      // wrap native Promise#then for native async functions
+      redefine(nativePromiseConstructor.prototype, 'then', function then(onFulfilled, onRejected) {
+        var that = this;
+        return new PromiseConstructor(function (resolve, reject) {
+          nativeThen.call(that, resolve, reject);
+        }).then(onFulfilled, onRejected);
+      });
+
+      // wrap fetch result
+      if (typeof $fetch == 'function') _export({ global: true, enumerable: true, forced: true }, {
+        // eslint-disable-next-line no-unused-vars
+        fetch: function fetch(input) {
+          return promiseResolve(PromiseConstructor, $fetch.apply(global_1, arguments));
+        }
+      });
+    }
   }
 
   _export({ global: true, wrap: true, forced: FORCED$2 }, {
@@ -6089,11 +6117,11 @@ typeof navigator === "object" && (function (global, factory) {
     }
   });
 
-  _export({ target: PROMISE, stat: true, forced: FORCED$2 }, {
+  _export({ target: PROMISE, stat: true, forced:  FORCED$2 }, {
     // `Promise.resolve` method
     // https://tc39.github.io/ecma262/#sec-promise.resolve
     resolve: function resolve(x) {
-      return promiseResolve(this, x);
+      return promiseResolve( this, x);
     }
   });
 
@@ -6321,12 +6349,26 @@ typeof navigator === "object" && (function (global, factory) {
   var browser = {
     isIE:
     /* @cc_on!@ */
-    !!document.documentMode,
+     !!document.documentMode,
     isEdge: window.navigator.userAgent.includes('Edge'),
     isWebkit: 'WebkitAppearance' in document.documentElement.style && !/Edge/.test(navigator.userAgent),
     isIPhone: /(iPhone|iPod)/gi.test(navigator.platform),
     isIos: /(iPad|iPhone|iPod)/gi.test(navigator.platform)
   };
+
+  var nativeReverse = [].reverse;
+  var test$1 = [1, 2];
+
+  // `Array.prototype.reverse` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.reverse
+  // fix for Safari 12.0 bug
+  // https://bugs.webkit.org/show_bug.cgi?id=188794
+  _export({ target: 'Array', proto: true, forced: String(test$1) === String(test$1.reverse()) }, {
+    reverse: function reverse() {
+      if (isArray(this)) this.length = this.length;
+      return nativeReverse.call(this);
+    }
+  });
 
   // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
   // https://www.youtube.com/watch?v=NPM6172J22g
@@ -6727,7 +6769,7 @@ typeof navigator === "object" && (function (global, factory) {
       return Array.from(document.querySelectorAll(selector)).includes(this);
     }
 
-    var method = match;
+    var method =  match;
     return method.call(element, selector);
   } // Find all elements
 
@@ -8360,19 +8402,19 @@ typeof navigator === "object" && (function (global, factory) {
         if (!is.element(this.elements.settings.panels.loop)) {
             return;
         }
-         const options = ['start', 'end', 'all', 'reset'];
+          const options = ['start', 'end', 'all', 'reset'];
         const list = this.elements.settings.panels.loop.querySelector('[role="menu"]');
-         // Show the pane and tab
+          // Show the pane and tab
         toggleHidden(this.elements.settings.buttons.loop, false);
         toggleHidden(this.elements.settings.panels.loop, false);
-         // Toggle the pane and tab
+          // Toggle the pane and tab
         const toggle = !is.empty(this.loop.options);
         controls.toggleMenuButton.call(this, 'loop', toggle);
-         // Empty the menu
+          // Empty the menu
         emptyElement(list);
-         options.forEach(option => {
+          options.forEach(option => {
             const item = createElement('li');
-             const button = createElement(
+              const button = createElement(
                 'button',
                 extend(getAttributesFromSelector(this.config.selectors.buttons.loop), {
                     type: 'button',
@@ -8381,11 +8423,11 @@ typeof navigator === "object" && (function (global, factory) {
                 }),
                 i18n.get(option, this.config)
             );
-             if (['start', 'end'].includes(option)) {
+              if (['start', 'end'].includes(option)) {
                 const badge = controls.createBadge.call(this, '00:00');
                 button.appendChild(badge);
             }
-             item.appendChild(button);
+              item.appendChild(button);
             list.appendChild(item);
         });
     }, */
@@ -10531,10 +10573,10 @@ typeof navigator === "object" && (function (global, factory) {
             /* case 73:
                 this.setLoop('start');
                 break;
-             case 76:
+              case 76:
                 this.setLoop();
                 break;
-             case 79:
+              case 79:
                 this.setLoop('end');
                 break; */
 
@@ -14801,7 +14843,7 @@ typeof navigator === "object" && (function (global, factory) {
         this.media.loop = toggle; // Set default to be a true toggle
 
         /* const type = ['start', 'end', 'all', 'none', 'toggle'].includes(input) ? input : 'toggle';
-         switch (type) {
+          switch (type) {
             case 'start':
                 if (this.config.loop.end && this.config.loop.end <= this.currentTime) {
                     this.config.loop.end = null;
@@ -14809,20 +14851,20 @@ typeof navigator === "object" && (function (global, factory) {
                 this.config.loop.start = this.currentTime;
                 // this.config.loop.indicator.start = this.elements.display.played.value;
                 break;
-             case 'end':
+              case 'end':
                 if (this.config.loop.start >= this.currentTime) {
                     return this;
                 }
                 this.config.loop.end = this.currentTime;
                 // this.config.loop.indicator.end = this.elements.display.played.value;
                 break;
-             case 'all':
+              case 'all':
                 this.config.loop.start = 0;
                 this.config.loop.end = this.duration - 2;
                 this.config.loop.indicator.start = 0;
                 this.config.loop.indicator.end = 100;
                 break;
-             case 'toggle':
+              case 'toggle':
                 if (this.config.loop.active) {
                     this.config.loop.start = 0;
                     this.config.loop.end = null;
@@ -14831,7 +14873,7 @@ typeof navigator === "object" && (function (global, factory) {
                     this.config.loop.end = this.duration - 2;
                 }
                 break;
-             default:
+              default:
                 this.config.loop.start = 0;
                 this.config.loop.end = null;
                 break;

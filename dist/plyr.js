@@ -66,6 +66,10 @@ typeof navigator === "object" && (function (global, factory) {
   }
 
   function _iterableToArrayLimit(arr, i) {
+    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+      return;
+    }
+
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -115,7 +119,7 @@ typeof navigator === "object" && (function (global, factory) {
       return Array.from(document.querySelectorAll(selector)).includes(this);
     }
 
-    var matches = match;
+    var matches =  match;
     return matches.call(element, selector);
   }
 
@@ -576,7 +580,7 @@ typeof navigator === "object" && (function (global, factory) {
   var browser = {
     isIE:
     /* @cc_on!@ */
-    !!document.documentMode,
+     !!document.documentMode,
     isEdge: window.navigator.userAgent.includes('Edge'),
     isWebkit: 'WebkitAppearance' in document.documentElement.style && !/Edge/.test(navigator.userAgent),
     isIPhone: /(iPhone|iPod)/gi.test(navigator.platform),
@@ -983,7 +987,7 @@ typeof navigator === "object" && (function (global, factory) {
       return Array.from(document.querySelectorAll(selector)).includes(this);
     }
 
-    var method = match;
+    var method =  match;
     return method.call(element, selector);
   } // Find all elements
 
@@ -2555,19 +2559,19 @@ typeof navigator === "object" && (function (global, factory) {
         if (!is.element(this.elements.settings.panels.loop)) {
             return;
         }
-         const options = ['start', 'end', 'all', 'reset'];
+          const options = ['start', 'end', 'all', 'reset'];
         const list = this.elements.settings.panels.loop.querySelector('[role="menu"]');
-         // Show the pane and tab
+          // Show the pane and tab
         toggleHidden(this.elements.settings.buttons.loop, false);
         toggleHidden(this.elements.settings.panels.loop, false);
-         // Toggle the pane and tab
+          // Toggle the pane and tab
         const toggle = !is.empty(this.loop.options);
         controls.toggleMenuButton.call(this, 'loop', toggle);
-         // Empty the menu
+          // Empty the menu
         emptyElement(list);
-         options.forEach(option => {
+          options.forEach(option => {
             const item = createElement('li');
-             const button = createElement(
+              const button = createElement(
                 'button',
                 extend(getAttributesFromSelector(this.config.selectors.buttons.loop), {
                     type: 'button',
@@ -2576,11 +2580,11 @@ typeof navigator === "object" && (function (global, factory) {
                 }),
                 i18n.get(option, this.config)
             );
-             if (['start', 'end'].includes(option)) {
+              if (['start', 'end'].includes(option)) {
                 const badge = controls.createBadge.call(this, '00:00');
                 button.appendChild(badge);
             }
-             item.appendChild(button);
+              item.appendChild(button);
             list.appendChild(item);
         });
     }, */
@@ -4714,10 +4718,10 @@ typeof navigator === "object" && (function (global, factory) {
             /* case 73:
                 this.setLoop('start');
                 break;
-             case 76:
+              case 76:
                 this.setLoop();
                 break;
-             case 79:
+              case 79:
                 this.setLoop('end');
                 break; */
 
@@ -8895,7 +8899,7 @@ typeof navigator === "object" && (function (global, factory) {
         this.media.loop = toggle; // Set default to be a true toggle
 
         /* const type = ['start', 'end', 'all', 'none', 'toggle'].includes(input) ? input : 'toggle';
-         switch (type) {
+          switch (type) {
             case 'start':
                 if (this.config.loop.end && this.config.loop.end <= this.currentTime) {
                     this.config.loop.end = null;
@@ -8903,20 +8907,20 @@ typeof navigator === "object" && (function (global, factory) {
                 this.config.loop.start = this.currentTime;
                 // this.config.loop.indicator.start = this.elements.display.played.value;
                 break;
-             case 'end':
+              case 'end':
                 if (this.config.loop.start >= this.currentTime) {
                     return this;
                 }
                 this.config.loop.end = this.currentTime;
                 // this.config.loop.indicator.end = this.elements.display.played.value;
                 break;
-             case 'all':
+              case 'all':
                 this.config.loop.start = 0;
                 this.config.loop.end = this.duration - 2;
                 this.config.loop.indicator.start = 0;
                 this.config.loop.indicator.end = 100;
                 break;
-             case 'toggle':
+              case 'toggle':
                 if (this.config.loop.active) {
                     this.config.loop.start = 0;
                     this.config.loop.end = null;
@@ -8925,7 +8929,7 @@ typeof navigator === "object" && (function (global, factory) {
                     this.config.loop.end = this.duration - 2;
                 }
                 break;
-             default:
+              default:
                 this.config.loop.start = 0;
                 this.config.loop.end = null;
                 break;
